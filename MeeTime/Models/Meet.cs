@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MeeTime.Controllers
+namespace MeeTime.Models
 {
     public class Meet
     {
@@ -17,7 +17,5 @@ namespace MeeTime.Controllers
         {
 
         }
-
-
     }
 }
