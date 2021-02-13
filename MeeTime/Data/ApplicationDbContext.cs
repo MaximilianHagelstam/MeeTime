@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MeeTime.Models;
 
 namespace MeeTime.Data
 {
@@ -12,5 +13,6 @@ namespace MeeTime.Data
             : base(options)
         {
         }
+        public DbSet<MeeTime.Models.Meet> Meet { get; set; }
     }
 }
