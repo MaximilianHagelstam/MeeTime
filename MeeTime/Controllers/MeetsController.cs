@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MeeTime.Data;
 using MeeTime.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MeeTime.Controllers
 {
@@ -33,10 +34,10 @@ namespace MeeTime.Controllers
 
         // POST: Meets/ShowSearchResults
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
-        {
+        { 
             return View("Index", await _context.Meet.Where( j => j.MeetName.Contains(SearchPhrase)).ToListAsync());
         }
-
+         
 
         // GET: Meets/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -57,6 +58,7 @@ namespace MeeTime.Controllers
         }
 
         // GET: Meets/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -65,6 +67,7 @@ namespace MeeTime.Controllers
         // POST: Meets/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,MeetName,MeetCode")] Meet meet)
@@ -79,6 +82,7 @@ namespace MeeTime.Controllers
         }
 
         // GET: Meets/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -97,6 +101,7 @@ namespace MeeTime.Controllers
         // POST: Meets/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,MeetName,MeetCode")] Meet meet)
@@ -130,6 +135,7 @@ namespace MeeTime.Controllers
         }
 
         // GET: Meets/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -148,6 +154,7 @@ namespace MeeTime.Controllers
         }
 
         // POST: Meets/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
