@@ -26,12 +26,6 @@ namespace MeeTime.Controllers
             return View(await _context.Meet.ToListAsync());
         }
 
-        // GET: Meets/ShowSearchForm
-        public IActionResult ShowSearchForm()
-        {
-            return View();
-        }
-
         // POST: Meets/ShowSearchResults
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
         { 
