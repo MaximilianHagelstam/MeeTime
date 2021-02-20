@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MeeTime.Data;
 using MeeTime.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace MeeTime.Controllers
 {
@@ -23,7 +24,7 @@ namespace MeeTime.Controllers
         // GET: Meets
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Meet.ToListAsync());
+            return View("Index", await _context.Meet.Where(j => j.CurrentUserId == User.Identity.Name).ToListAsync());
         }
 
         // POST: Meets/ShowSearchResults
@@ -64,10 +65,11 @@ namespace MeeTime.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MeetName,MeetCode")] Meet meet)
+        public async Task<IActionResult> Create([Bind("Id,MeetName,MeetCode,CurrentUserId")] Meet meet)
         {
             if (ModelState.IsValid)
             {
+                meet.CurrentUserId = User.Identity.Name;
                 _context.Add(meet);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

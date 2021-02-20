@@ -13,6 +13,8 @@ namespace MeeTime.Models
 
         public string MeetCode { get; set; }
 
+        public string CurrentUserId { get; set; }
+
         public Meet()
         {
 
