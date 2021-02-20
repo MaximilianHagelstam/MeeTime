@@ -18,32 +18,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.MeetCode)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.CurrentUserId)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MeetName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MeetCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrentUserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a href='@string.Format("https://meet.google.com/{0}?authuser=1", item.MeetCode)'>Join meet</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeetCode)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.CurrentUserId)
+                </td>*@
+                <td>
+                    <a href='@string.Format("https://meet.google.com/{0}?authuser=1", item.MeetCode)'>Join meet</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
