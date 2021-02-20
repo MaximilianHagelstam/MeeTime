@@ -32,7 +32,7 @@ namespace MeeTime.Controllers
         [Authorize]
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
         { 
-            return View("Index", await _context.Meet.Where( j => j.MeetName.Contains(SearchPhrase)).ToListAsync());
+            return View("Index", await _context.Meet.Where( j => j.MeetName.Contains(SearchPhrase) && j.CurrentUserId == User.Identity.Name).ToListAsync());
         }
 
 
