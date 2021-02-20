@@ -22,19 +22,22 @@ namespace MeeTime.Controllers
         }
 
         // GET: Meets
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View("Index", await _context.Meet.Where(j => j.CurrentUserId == User.Identity.Name).ToListAsync());
         }
 
         // POST: Meets/ShowSearchResults
+        [Authorize]
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
         { 
             return View("Index", await _context.Meet.Where( j => j.MeetName.Contains(SearchPhrase)).ToListAsync());
         }
-         
+
 
         // GET: Meets/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -56,6 +59,7 @@ namespace MeeTime.Controllers
         [Authorize]
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -111,6 +115,7 @@ namespace MeeTime.Controllers
             {
                 try
                 {
+                    meet.CurrentUserId = User.Identity.Name;
                     _context.Update(meet);
                     await _context.SaveChangesAsync();
                 }

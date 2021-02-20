@@ -18,6 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MeetCode)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentUserId)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -30,6 +33,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MeetCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentUserId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
