@@ -1,12 +1,10 @@
 ﻿@model MeeTime.Models.Meet
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Meet";
 }
 
 <h1>Edit</h1>
-
-<h4>Meet</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,12 +12,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="MeetName" class="control-label"></label>
+                <label asp-for="MeetName" class="control-label">Meet Name</label>
                 <input asp-for="MeetName" class="form-control" />
                 <span asp-validation-for="MeetName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MeetCode" class="control-label"></label>
+                <label asp-for="MeetCode" class="control-label">Meet Code</label>
                 <input asp-for="MeetCode" class="form-control" />
                 <span asp-validation-for="MeetCode" class="text-danger"></span>
             </div>

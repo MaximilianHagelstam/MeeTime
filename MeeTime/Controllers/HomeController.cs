@@ -1,4 +1,5 @@
 ﻿using MeeTime.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,10 +21,17 @@ namespace MeeTime.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Meets");
+            }
+            else
+            {
+                return View();
+            }
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
