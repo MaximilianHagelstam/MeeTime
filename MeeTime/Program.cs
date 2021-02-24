@@ -22,7 +22,7 @@ namespace MeeTime
 .ConfigureAppConfiguration((context, config) =>
 {
 var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
-config.AddAzureKeyVault(
+    config.AddAzureKeyVault(
 keyVaultEndpoint,
 new DefaultAzureCredential());
 })
